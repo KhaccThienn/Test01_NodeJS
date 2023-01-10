@@ -1,0 +1,53 @@
+<%- include('./layouts/header.ejs') %>
+    <%- include('./layouts/menu.ejs') %>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên</label>
+                            <input type="text" class="form-control" name="ten_sp" aria-describedby="emailHelp"
+                                placeholder="Enter email" value="<%= product.ten_sp %> ">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ảnh</label>
+                            <input type="file" class="form-control" name="image" aria-describedby="emailHelp"
+                                placeholder="Enter email">
+                            <div class="img">
+                                <img src="/<%= product.anh_sp %>" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giá Sp</label>
+                            <input type="text" class="form-control" name="gia_sp" aria-describedby="emailHelp"
+                                placeholder="Enter email" value="<%= product.gia_sp %> ">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giá KM</label>
+                            <input type="text" class="form-control" name="gia_km" aria-describedby="emailHelp"
+                                placeholder="Enter email" value="<%= product.gia_km %> ">
+                        </div>
+                        <div class="form-group">
+                            <label for="ma_danh_muc">Danh Mục</label>
+                            <select class="form-control" name="ma_danh_muc" id="ma_danh_muc">
+                                <% categories.forEach((item, index)=> { %>
+                                    <% if (item.id==product.ma_danh_muc) { %>
+                                        <option value="<%= item.id %>" selected>
+                                            <%= item.id %> - <%= item.ten_danh_muc %>
+                                        </option>
+                                        <% } else { %>
+                                            <option value="<%= item.id %>">
+                                                <%= item.id %> - <%= item.ten_danh_muc %>
+                                            </option>
+                                        <% } %>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+<%- include('./layouts/footer.ejs') %>
